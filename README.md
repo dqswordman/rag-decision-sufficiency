@@ -1,72 +1,41 @@
-# Complex Utility, Simple Calibration
+# Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection
 
-**Decision Sufficiency in RAG Evidence Selection**\
-Wenzhang Du · **WSDM 2027 Findings**
+Wenzhang Du · WSDM 2027 Findings · Accepted manuscript
 
-Replay an evidence-selection study from archived model scores on CPU. The tagged artifact regenerates the selections, paired comparisons, and paper tables.
+The artifact replays how an additive model proposes a RAG evidence set and how a target score changes the final choice. It includes the numerical inputs, policy code, paired comparisons, and reference outputs for CPU reproduction.
 
-[Technical report](https://dqswordman.github.io/technical-reports/decision-sufficiency/) · [中文技术报告](https://dqswordman.github.io/zh/technical-reports/decision-sufficiency/) · [CPU quickstart](#reproduce-the-results) · [Release v1.0.0](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) · [Data provenance](DATA_PROVENANCE.md)
+[Paper companion](https://dqswordman.github.io/technical-reports/decision-sufficiency/) · [中文伴读](https://dqswordman.github.io/zh/technical-reports/decision-sufficiency/) · [Reproduction guide](docs/reproduction.md) · [Release v1.0.0](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0)
 
-## Results at a glance
+## Follow one archived decision
 
-Nine measurements score the empty context and each singleton in an eight-passage pool. The additive policy (P1) proposes up to three passages. A targeted check scores that subset if needed and returns the highest-utility measured context.
+With Python 3.9 or newer, run this example from a fresh copy of the default branch. It uses the standard library and the included archive.
 
-[![Mean normalized regret across 1,440 cases. Best measured 0.213, additive 0.272, additive plus one check 0.162.](https://dqswordman.github.io/assets/reports/decision-sufficiency/mean-regret.png)](https://dqswordman.github.io/technical-reports/decision-sufficiency/#results)
+```sh
+git clone --depth 1 https://github.com/dqswordman/rag-decision-sufficiency.git
+cd rag-decision-sufficiency
+python code/inspect_case.py
+```
 
-| Policy | Mean target utility calls | Mean normalized regret ↓ | Token F1 ↑ | Answer EM ↑ |
-| :--- | ---: | ---: | ---: | ---: |
-| Best measured (BO9) | 9.00 | 0.213 | 0.586 | 0.444 |
-| Additive (P1) | 9.00 | 0.272 | 0.554 | 0.422 |
-| P1 + one check | **9.61** | **0.162** | **0.592** | **0.453** |
+On the MuSiQue question about King Arthur, P1 estimates utility **1.574** for passages **{1, 5}**. The measured pair scores **0.206**. The check returns passage **{1}**, the best measured context at **0.918**. The program prints both the chosen contexts and their archived answer scores. The pair produced the exact short answer on this question, while the singleton scored 0.444 token F1. [Example details](docs/reproduction.md#try-one-archived-decision)
 
-The primary comparison covers 1,440 question–pool–generator cases with a three-passage selection limit. Relative to P1, the one-check policy reduces mean normalized regret by 0.109 in the paired comparison (95% interval [0.085, 0.138]). [Main results table](reference/tables/table_primary.tex) · [Paired comparisons](reference/tables/table_paired.tex) · [Worked examples](https://dqswordman.github.io/technical-reports/decision-sufficiency/#worked-examples)
+## What the held-out cases show
+
+[![Mean normalized regret at the nine-call budget and after one optional check. BO9 0.213, P1 0.272, and P1 plus one check 0.162.](https://dqswordman.github.io/assets/reports/decision-sufficiency/mean-regret.png)](https://dqswordman.github.io/technical-reports/decision-sufficiency/#results)
+
+The main comparison fixes the pool at eight candidates and allows up to three selected passages. Over **1,440 matched question–pool–generator settings**, the same nine target scores yield mean regret **0.213** when the policy keeps the best measured context and **0.272** when it commits to the additive proposal. Scoring that proposal when it is new lowers mean regret to **0.162** at **9.61** calls. The paired token F1 gain against P1 is **0.038** with a 95% interval of **[0.020, 0.056]**.
+
+A second operating point uses selected pair measurements. At the same mean cost of **11.43** calls, keeping the best measured context reaches **0.122** regret and maximizing the fitted quadratic reaches **0.213**. [Table 1](reference/tables/table_primary.tex) · [Paired comparisons](reference/tables/table_paired.tex)
 
 ## Reproduce the results
 
-The replay starts from archived model scores and runs locally on CPU with no model or benchmark downloads. The v1.0.0 verification used Python 3.9.21 and the versions in `requirements.txt`.
+Use [`v1.0.0`](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) at `7b0f639a207b1826915227aaff2eef3addea499d` for the paper replay. A clean CPU run with Python 3.9.21 verified **41 input hashes**, matched **22 result CSVs** and **four TeX table bodies**, and regenerated the regret distribution. The replay reads archived scores. The original benchmark and model revisions are recorded in the provenance file.
 
-```sh
-git clone --branch v1.0.0 https://github.com/dqswordman/rag-decision-sufficiency.git
-cd rag-decision-sufficiency
-python -m venv .venv
-```
+[Run the tagged replay](docs/reproduction.md#replay-the-paper-results) · [Result map](docs/result-map.csv) · [Version manifest](docs/release-manifest.json) · [Published verification record](https://github.com/dqswordman/rag-decision-sufficiency/releases/download/v1.0.0/reproduction_report.json)
 
-Activate the environment with `. .venv/bin/activate` on a POSIX shell or `.\.venv\Scripts\Activate.ps1` in PowerShell. Install the pinned dependencies and run the replay.
+The default branch is maintained for the example and documentation. Use the release tag when citing or replaying the frozen analysis.
 
-```sh
-python -m pip install -r requirements.txt
-python code/reproduce.py
-```
+## Reuse and cite
 
-The command verifies the archived inputs by SHA-256, recomputes the selections and paired bootstrap intervals, and checks 22 result CSVs and the exact typeset rows of all four paper tables. Use `python code/reproduce.py --verify-inputs` for an integrity check alone. A completed run writes `results/reproduction_report.json`. [Release verification record](https://github.com/dqswordman/rag-decision-sufficiency/releases/download/v1.0.0/reproduction_report.json)
+The original code is available under the [MIT License](LICENSE). Original numerical measurements are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with benchmark identifiers governed by the upstream terms in [data provenance](DATA_PROVENANCE.md). The [asset manifest](docs/asset-manifest.csv) records sources, versions, and checksums.
 
-<details>
-<summary>Archive layout</summary>
-
-| Directory | Contents |
-| :--- | :--- |
-| [`code/`](code/) | CPU replay, selection policies, and table generation |
-| [`data/`](data/) | Archived context utilities, generation metrics, and input checksums |
-| [`frozen/`](frozen/) | Frozen experiment protocols and manifests |
-| [`reference/`](reference/) | Expected result CSVs and typeset rows |
-
-</details>
-
-## Trace the results
-
-| Output | Contents |
-| --- | --- |
-| `results/selection_overall.csv` and `results/selection_paired.csv` | Main regret and utility-call results with paired intervals. [Archived references](reference/results/) |
-| `results/generation_overall.csv` and `results/generation_paired.csv` | Token F1 and exact match from 8,106 distinct scored contexts, mapped to 15,840 method outcomes |
-| `results/m8_decisions.csv` | Selected masks, observed probes, and regret for the eight-passage study |
-| `results/geometry_*.csv`, `results/nested_*.csv`, `results/extension_*.csv` | Feasible-domain utility geometry and matched pool-width comparisons |
-| `results/worked_examples_with_generation.json` | Selected query keys, utility probes, masks, and answer metrics for the two worked cases |
-| `source/table_*.tex`, `figures/regret_distribution.{pdf,png}` | Typeset table rows and the Figure 2 regret distribution |
-
-The archived model outputs consist of numeric measurements keyed by context. Dataset sources, exact model snapshots, input columns, and scope are documented in [Data provenance](DATA_PROVENANCE.md).
-
-## Citation and reuse
-
-Cite Wenzhang Du, *Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection*, WSDM 2027 Findings. The artifact citation is in [CITATION.cff](CITATION.cff). Use the [v1.0.0 release](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) to identify this version.
-
-The original code is available under the [MIT License](LICENSE). See [data terms](DATA_PROVENANCE.md#reuse) for the numerical exports and benchmark identifiers.
+Cite Wenzhang Du, *Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection*, WSDM 2027 Findings, for the research. Cite the [software artifact](CITATION.cff) at `v1.0.0` when using the archived inputs or CPU replay.

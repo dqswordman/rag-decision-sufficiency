@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "project_title": "Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection",
+  "artifact_version": "v1.0.0",
+  "paper": {
+    "authors": ["Wenzhang Du"],
+    "venue": "WSDM 2027 Findings",
+    "status": "accepted",
+    "version": "Author-final manuscript, 2026-11-11",
+    "public_url": null
+  },
+  "code": {
+    "repository": "https://github.com/dqswordman/rag-decision-sufficiency",
+    "commit": "7b0f639a207b1826915227aaff2eef3addea499d",
+    "tag": "v1.0.0",
+    "release_url": "https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0",
+    "source_zip": "https://github.com/dqswordman/rag-decision-sufficiency/archive/refs/tags/v1.0.0.zip",
+    "integrity_manifest": "data/SHA256SUMS"
+  },
+  "asset_manifest": "asset-manifest.csv",
+  "result_map": "result-map.csv",
+  "verification": {
+    "status": "pass",
+    "verified_on": "2026-11-11",
+    "environment": {
+      "os": "Windows 11 x64",
+      "device": "CPU",
+      "python": "3.9.21",
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "pyyaml": "6.0.2",
+      "matplotlib": "3.8.4"
+    },
+    "command": "python code/reproduce.py",
+    "source_zip_bytes_checked": 4292790,
+    "input_hashes_verified": 41,
+    "reference_csvs_matched": 22,
+    "tex_tables_matched": 4,
+    "verification_output": "results/reproduction_report.json",
+    "published_record": "https://github.com/dqswordman/rag-decision-sufficiency/releases/download/v1.0.0/reproduction_report.json"
+  },
+  "website_article": {
+    "url": "https://dqswordman.github.io/technical-reports/decision-sufficiency/",
+    "version": "1.1",
+    "type": "Paper companion"
+  }
+}
