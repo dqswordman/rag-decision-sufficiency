@@ -1,0 +1,15 @@
+{
+  "design": "Paired support-blind pool extension on the same MuSiQue dev queries. HotpotQA distractor and 2Wiki dev fixed pools contain 10 passages and are ineligible for m=12.",
+  "query_eligibility": "Original 60 MuSiQue confirmation query IDs with at least 12 fixed candidates and all candidate BGE scores available under the frozen revision. No model utility criterion.",
+  "sample": {"max_queries": 20, "hash_namespace": "WSDM643-M12-TRACK-B-v1", "seed": 20271103, "order": "SHA256(namespace|seed|dataset_id|query_id), then query ID"},
+  "pool_sizes": [8, 12],
+  "models": ["qwen", "gemma"],
+  "budget": 3,
+  "retrieval": "Original BM25 (k1=0.9, b=0.4) and pinned BGE (512 tokens), RRF k=60 with candidate-ID tie-break. Preserve original B_m8 positions and append ranks 9–12 in RRF order. Take prefixes of this fixed order.",
+  "score": "Exact at-most-three set enumeration. Reuse historical mean log probabilities only when candidate serialization and reference are identical. Newly score only masks containing an appended passage, batch one and bfloat16 weights, using the original prompt and teacher-forced scorer.",
+  "methods": ["BO9", "P1", "P1-check", "BO-adaptive", "Adaptive", "Adaptive-check", "All-pairs", "Retrieval top-b"],
+  "adaptive": "Same pre-confirmation 7.288293838500977 threshold, top four feasible contenders and all pairs in them.",
+  "bootstrap": "Identical query-cluster percentile scheme as revision_protocol.json. Hold the historical MuSiQue Track B model scales fixed.",
+  "generation": "Corrected generation settings. Reuse exact previously generated contexts and deduplicate remaining final contexts across pool sizes and policies.",
+  "resource_decision": "m=12 is the fixed expansion. m=16 would add 15,920 feasible contexts for the same 40 query-model rows, with historical per-model runtimes making m=12 the smaller complete test."
+}

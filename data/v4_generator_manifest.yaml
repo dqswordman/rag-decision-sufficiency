@@ -1,0 +1,39 @@
+schema_version: eug-v4-generator-manifest-v1
+frozen_utc: '2026-08-14T14:46:10Z'
+status: FROZEN_BEFORE_ANY_V4_TARGET_OUTPUT
+models:
+  qwen:
+    repo_id: Qwen/Qwen2.5-7B-Instruct
+    revision: a09a35458c702b33eeacc393d103063234e8bc28
+    tokenizer_revision: a09a35458c702b33eeacc393d103063234e8bc28
+    architecture: causal_lm
+  gemma:
+    repo_id: google/gemma-3-4b-it
+    revision: 093f9f388b31de276ce2de164bdc2081324b9767
+    tokenizer_revision: 093f9f388b31de276ce2de164bdc2081324b9767
+    architecture: image_text_to_text
+  mistral:
+    repo_id: mistralai/Mistral-7B-Instruct-v0.3
+    revision: c170c708c41dac9275d15a8fff4eca08d52bab71
+    tokenizer_revision: c170c708c41dac9275d15a8fff4eca08d52bab71
+    architecture: causal_lm
+  phi:
+    repo_id: microsoft/Phi-4-mini-instruct
+    revision: cfbefacb99257ffa30c83adab238a50856ac3083
+    tokenizer_revision: cfbefacb99257ffa30c83adab238a50856ac3083
+    architecture: causal_lm
+execution:
+  requested_device: cuda:0
+  required_actual_model_device: cuda:0
+  required_actual_input_device: cuda:0
+  dtype: bfloat16
+  amp: false
+  quantization: NONE
+  cpu_offload: false
+  fallback_status: NO_FALLBACK
+  batch_size: 1
+  local_files_only: true
+prompt_version: EUG-TEACHER-FORCED-PROMPT-v1
+source_lineage: projects/wsdm27_eug_discovery_v3/data_manifests/generator_manifest.yaml
+source_lineage_sha256: d4742b81f0d145131913dd9499d2b9dd96a8386aaf054e047e34b5a3855306f0
+

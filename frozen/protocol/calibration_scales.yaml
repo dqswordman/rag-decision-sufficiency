@@ -1,0 +1,168 @@
+schema_version: eug-calibration-scales-v1
+created_utc: '2026-08-12T01:51:08.649815+00:00'
+source_split: calibration_only
+final_results_observed: false
+frozen: true
+cells:
+- dataset_key: 2wikimultihopqa
+  model_key: qwen
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 2.5462329387664795
+  epsilon_material: 0.12731164693832397
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: 2wikimultihopqa
+  model_key: qwen
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 2.3152434825897217
+  epsilon_material: 0.11576217412948608
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: 2wikimultihopqa
+  model_key: gemma
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 5.914900541305542
+  epsilon_material: 0.2957450270652771
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: 2wikimultihopqa
+  model_key: gemma
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 5.731347918510437
+  epsilon_material: 0.2865673959255219
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: 2wikimultihopqa
+  model_key: mistral
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 2.4079639837145805
+  epsilon_material: 0.12039819918572903
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: 2wikimultihopqa
+  model_key: mistral
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 2.2605845915386453
+  epsilon_material: 0.11302922957693227
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: hotpotqa
+  model_key: qwen
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 3.539041757583618
+  epsilon_material: 0.17695208787918093
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: hotpotqa
+  model_key: qwen
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 3.548422485589981
+  epsilon_material: 0.17742112427949908
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: hotpotqa
+  model_key: gemma
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 8.45660948753357
+  epsilon_material: 0.4228304743766785
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: hotpotqa
+  model_key: gemma
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 8.154930233955383
+  epsilon_material: 0.4077465116977692
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: hotpotqa
+  model_key: mistral
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 3.021610365714878
+  epsilon_material: 0.1510805182857439
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: hotpotqa
+  model_key: mistral
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 2.9963547438383102
+  epsilon_material: 0.14981773719191552
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: musique
+  model_key: qwen
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 4.644131064414978
+  epsilon_material: 0.2322065532207489
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: musique
+  model_key: qwen
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 3.8228814601898193
+  epsilon_material: 0.191144073009491
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: musique
+  model_key: gemma
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 7.675452947616577
+  epsilon_material: 0.3837726473808289
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: musique
+  model_key: gemma
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 7.103843688964844
+  epsilon_material: 0.3551921844482422
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: musique
+  model_key: mistral
+  universe_name: A_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 3.6277481466531754
+  epsilon_material: 0.1813874073326588
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)
+- dataset_key: musique
+  model_key: mistral
+  universe_name: B_m6
+  query_count: 60
+  subset_value_count: 3840
+  scale_definition: IQR(centered_U_over_all_calibration_query_subsets)
+  robust_iqr_scale: 2.973113477230072
+  epsilon_material: 0.1486556738615036
+  epsilon_rule: max(1e-3, 0.05 * robust_iqr_scale)

@@ -1,0 +1,230 @@
+schema_version: eug-v4-m8-confirmation-protocol-v1
+cycle_id: CYCLE-EUG-DECISION-COMPLEXITY-V4
+frozen_utc: '2026-08-14T14:46:10Z'
+status: FROZEN_BEFORE_ANY_V4_TARGET_OUTPUT
+outcome_blind_for_v4_target_outputs: true
+v4_target_utility_outputs_observed_before_freeze: false
+prior_lineages:
+  immutable: true
+  roots:
+    - projects/wsdm27_evidence_utility_geometry_r02_main
+    - projects/wsdm27_eug_subset_structure_v2
+    - projects/wsdm27_eug_discovery_v3
+promoted_objects:
+  laws:
+    - id: DCC-1-4
+      name: DECISION_CALIBRATION SEPARATION AT SCALE
+      statement: >-
+        At m=8 and b=3, empty plus eight target singletons beats the frozen
+        historical zero-probe source mapping and a frozen same-budget generic
+        recovery under the 18-of-24 breadth gate while material EUG geometry
+        remains replicated.
+  adaptive_method:
+    id: B_contender_k4_q50
+    name: RISK-TRIGGERED TOP-FOUR CONTENDER PAIR ESCALATION
+    statement: >-
+      A frozen no-context risk trigger followed by only the pair probes appearing
+      inside the top four additive contenders improves the prospective cost-regret
+      frontier over P1 and exact same-cost random and generic controls.
+  rejected_or_held:
+    - DCC-2 additive-margin predictor
+    - DCC-3 local-not-global predictor law
+    - DCC-5 positive source-interaction shrinkage
+    - DCC-7 primary interface confirmation
+query_and_candidate_identity:
+  datasets: [2wikimultihopqa, hotpotqa, musique]
+  queries_per_dataset: 60
+  total_queries: 180
+  sample_role: completely untouched prospective confirmation
+  query_manifest: data_manifests/v4_confirmation_queries.csv
+  query_manifest_sha256: d39d476fc5c0ca5489841d40cada941e215088dedac6f79a3413ee5b2b3b5929
+  candidate_manifest: data_manifests/v4_confirmation_candidates.csv
+  candidate_manifest_sha256: 51978a53ffcafacd7f89fae3afb9830e8696c283527a842c4a099910e0a40499
+  query_id_manifest: data_manifests/v4_confirmation_query_ids.csv
+  query_id_manifest_sha256: b1a117ed80d4fb6c5eb67d72bab9b3e50e3cb47f1d4bf8a70822876a04685b0d
+  selection_seed: 20271103
+  selection_namespace: EUG-V4-M8-UNTOUCHED-v1
+  overlap_with_any_prior_scored_query_count: 0
+  candidate_construction_protocol_sha256: 47878f49a7fb396e9e522a78b0e458fde65cb0df0f9a7729e2e0973ac4ccd633
+  timestamp_correction_record:
+    artifact_text_value: '2026-08-14T16:00:00Z'
+    observed_file_creation_utc: '2026-08-14T14:38:48.9924487Z'
+    observed_candidate_manifest_completion_utc: '2026-08-14T14:39:51.0254175Z'
+    classification: LEXICAL_TIMESTAMP_ERROR_ONLY
+    treatment: preserve the already-hashed artifact; this record supplies the truthful provenance
+    scientific_semantics_changed: false
+design:
+  m: 8
+  tracks:
+    A_m8: controlled support-complete construction frozen in v4_candidate_construction_v1
+    B_m8: support-blind BM25-BGE-RRF construction frozen in v4_candidate_construction_v1
+  target_models: [qwen, gemma, mistral, phi]
+  generator_manifest: data_manifests/v4_generator_manifest.yaml
+  exact_subsets_per_query_model_track: 256
+  cube_count: 1440
+  utility_evaluations: 368640
+  primary_budget: 3
+  secondary_budget: 4
+  canonical_order: candidate canonical_position ascending
+  fixed_passage_representation: unchanged Title/Text representation; Qwen reference tokenizer first 256 tokens
+  manual_examples_forbidden: true
+utility:
+  estimand: teacher-forced centered canonical-answer mean log probability
+  prompt_version: EUG-TEACHER-FORCED-PROMPT-v1
+  raw_score: mean log probability of the canonical answer tokens
+  centering: subtract raw empty-set mean log probability within each query-model-track cube
+  target_prefix: one ASCII space
+  canonical_answer_primary: true
+  serializer: unchanged canonical selected-passage order
+  result_dependent_rerun: forbidden
+  full_cube_answer_generation: forbidden
+normalization:
+  rule: use frozen matching m6 dataset-model-track robust IQR scale and epsilon without recalibration
+  r02_scale_file: projects/wsdm27_evidence_utility_geometry_r02_main/protocol/calibration_scales.yaml
+  r02_scale_file_sha256: b14d187bc1c9673a34760a1f5d86bb356f7bd2ddee66bbeefe29deb9594a427e
+  m8_track_mapping: {A_m8: A_m6, B_m8: B_m6}
+  phi_scales:
+    - {dataset_key: 2wikimultihopqa, track: A_m8, scale: 2.5462329387664795, epsilon: 0.12731164693832397}
+    - {dataset_key: 2wikimultihopqa, track: B_m8, scale: 2.3152434825897217, epsilon: 0.11576217412948608}
+    - {dataset_key: hotpotqa, track: A_m8, scale: 3.539041757583618, epsilon: 0.17695208787918093}
+    - {dataset_key: hotpotqa, track: B_m8, scale: 3.548422485589981, epsilon: 0.17742112427949908}
+    - {dataset_key: musique, track: A_m8, scale: 4.644131064414978, epsilon: 0.2322065532207489}
+    - {dataset_key: musique, track: B_m8, scale: 3.8228814601898193, epsilon: 0.191144073009491}
+methods:
+  exact_target_optimum:
+    feasible_set: subsets with cardinality at most b
+    tie_break: larger utility then smaller integer bitmask
+    target_probes: 256
+  P0_historical_fixed_source:
+    target_probes: 0
+    mapping: {qwen: mistral, gemma: mistral, mistral: gemma, phi: mistral}
+    selected_set: exact at-most-b optimum of the mapped source model's target-aligned cube
+  source_ensemble_secondary:
+    target_probes: 0
+    rule: mean of the other three source utility vectors after division by each frozen source scale
+  retrospective_source_bounds_secondary:
+    label: optimistic post-outcome descriptive bounds; never a fair prospective baseline
+  P1_mplus1:
+    target_probes: 9
+    masks: empty set and all eight singleton masks
+    reconstruction: exact degree-1 Mobius additive model; all higher-order coefficients zero
+  P5_generic_hierarchical_omp_n9:
+    target_probes: 9
+    masks: >-
+      empty and all eight singletons; if a count above m+1 is requested elsewhere,
+      add remaining masks in SHA256(dataset|query|track|model|method_identity|mask|P5) order
+    reconstruction: frozen deterministic hierarchical Walsh OMP
+    max_terms: min(max(m+1, floor(n/4)), 24, n-1)
+    initial_terms: constant then singleton Walsh terms
+    hierarchy: an interaction term is eligible only after all immediate parents are selected
+    tie_break: score then negative integer mask then integer mask
+  P2_all_pairs:
+    target_probes: 37
+    masks: empty, eight singletons, and all 28 pairs
+    reconstruction: exact degree-2 Mobius model; all degree-3-plus coefficients zero
+  B_contender_k4_q50:
+    base_target_probes: 9
+    risk_score: negative raw no-context mean log probability
+    trigger: risk_score >= 7.288293838500977
+    primary_budget_for_contenders: 3
+    contender_count: 4
+    contender_rule: rank all at-most-3 masks by descending P1 additive prediction then ascending integer mask
+    additional_pair_masks: every unique pair contained in at least one of the top four contender masks, ascending pair order
+    reconstruction: exact degree-2 Mobius model using observed pairs; unobserved pair and all higher-order coefficients zero
+    maximum_total_probes: 21
+  random_same_cost_control:
+    pair_order: SHA256(dataset|query|track|model|pair|RANDOM), then pair
+    pair_count: identical to B_contender_k4_q50 for that cube
+    reconstruction: same quadratic rule as the adaptive method
+  generic_same_cost_control:
+    target_probe_count: identical to B_contender_k4_q50 for that cube
+    identity_suffix: B_contender_k4_q50|samecost
+    reconstruction: same frozen deterministic hierarchical Walsh OMP as P5
+statistics:
+  primary_sampling_unit: query cluster
+  cell: dataset x track x target model
+  cell_count: 24
+  aggregate_weighting: equal query-model-track rows; every cell has 60 queries
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20271103
+  confidence_interval: percentile 95 percent
+  paired_contrasts: reuse the identical query-model-track row within every comparison
+  report_all_cells: true
+  primary_metrics:
+    - target_normalized_regret
+    - material_epsilon_optimal_rate
+    - exact_optimum_match
+    - generated token F1
+    - generated exact match
+geometry:
+  quantities:
+    - material negative marginal rate
+    - query-bootstrap 95 percent CI
+    - material positive-Hessian rate
+    - query-bootstrap 95 percent CI
+    - normalized negative-marginal mass
+    - normalized positive-Hessian mass
+  material_cell_rule: >-
+    A cell passes if either its material-negative-marginal rate estimate is at
+    least 0.05 and its query-bootstrap lower 95 percent bound exceeds 0.01, or
+    its material-positive-Hessian rate estimate is at least 0.05 and its
+    query-bootstrap lower 95 percent bound exceeds 0.01.
+  replication_gate: at least 18 of 24 cells, representing all three datasets, both tracks, and all four target families
+success_gates:
+  DCC_1_4:
+    cell_pass: mean P1 b3 target-normalized regret is strictly lower than both P0 and P5-n9
+    breadth: at least 18 of 24 cells pass, representing all three datasets, both tracks, and all four target families
+    geometry: geometry replication gate passes independently
+    regret_capture: aggregate (P0-P1)/(P0-P2) is at least 0.50 when denominator is positive
+    generated_validation: fatal estimand mismatch rule does not trigger
+  adaptive_B:
+    aggregate: adaptive b3 mean normalized regret is strictly below P1 and both exact same-cost controls
+    breadth: at least 18 of 24 cells have adaptive regret strictly below both same-cost controls
+    cost: average target probes at most 13 and 90th-percentile target probes at most 21
+  exact_set_recovery: reported but not a success requirement
+  b4: secondary robustness only; cannot rescue a failed b3 gate
+generated_answer_validation:
+  scope: deduplicated selected sets only; never the 256-set cube
+  selection_roles: [exact_target_optimum, P0_historical_fixed_source, P1_mplus1, P5_generic_hierarchical_omp_n9, P2_all_pairs, B_contender_k4_q50]
+  decoder: greedy; do_sample false; temperature omitted; one sequence; maximum 64 new tokens; deterministic model defaults otherwise
+  normalization: frozen SQuAD-style lowercase-punctuation-article-whitespace answer normalization
+  metrics: [token_f1, exact_match]
+  inference: paired query-cluster bootstrap with 10000 resamples; all 24 cells and negative cells reported
+  primary_contrasts: [P1_minus_P0, P1_minus_P5, adaptive_minus_P1]
+  fatal_mismatch_rule: >-
+    Fatal only if both aggregate P1-minus-P0 and P1-minus-P5 token-F1 upper
+    95 percent confidence bounds are below zero and the raw token-F1 direction
+    is negative in at least 18 of 24 dataset-track-model cells. EM is reported
+    as corroboration and cannot alone trigger or rescue this rule.
+interface_policy:
+  primary_confirmation: canonical serializer and canonical answer only
+  reverse_serializer_branch: not promoted; no new GPU execution
+  alternate_alias_branch: not promoted; no new GPU execution
+  alias_aggregated_target: not defined and therefore forbidden
+resource_policy:
+  initial_claim_bearing_gpu_hours: 24
+  conditional_claim_bearing_gpu_hours: 36
+  absolute_ceiling_gpu_hours: 48
+  outcome_blind_projection_gpu_hours: 6.4
+  projected_design_within_initial_authority: true
+  reduce_to_40_per_dataset: false
+  partial_outcome_reduction_or_expansion: forbidden
+  full_cube_generation: forbidden
+failure_branches:
+  DCC_gate_fails: P1_FAILS_AT_M8 or P1_REMAINS_M6_LOCAL; do not change mapping, threshold, sample, model, epsilon, or gate
+  geometry_gate_fails: M8_GEOMETRY_DOES_NOT_REPLICATE; retain valid earlier-scope evidence without rescue
+  adaptive_gate_fails: ADAPTIVE_METHOD_REFUTED; retain diagnostic risk result only
+  fatal_generated_mismatch: TARGET_ESTIMAND_MISMATCH; prohibit DCC confirmation claim
+  law_passes_method_fails: retain scale law without adaptive method
+  method_passes_law_fails: report bounded adaptive result without universal DCC law
+forbidden_after_freeze:
+  - threshold changes
+  - source mapping changes
+  - query replacement
+  - candidate membership changes
+  - model substitution
+  - epsilon recalibration
+  - result-dependent rerun
+  - selective cell omission
+  - generated full-cube expansion before adjudication
+

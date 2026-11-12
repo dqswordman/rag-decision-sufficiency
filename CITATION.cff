@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use these artifacts, please cite this release and the associated WSDM 2027 Findings paper."
+title: "Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection"
+type: software
+authors:
+  - given-names: Wenzhang
+    family-names: Du
+    affiliation: Independent Researcher
+version: 1.0.0
+date-released: 2026-11-11
+url: "https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0"
+repository-code: "https://github.com/dqswordman/rag-decision-sufficiency"
+license: MIT
+keywords:
+  - retrieval-augmented generation
+  - multi-hop question answering
+  - evidence selection
+  - reproducibility

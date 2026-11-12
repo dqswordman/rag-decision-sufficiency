@@ -1,0 +1,14 @@
+{
+  "paper_id": 643,
+  "scope": "Reviewer-driven revision. Historical confirmation inputs and definitions stay fixed. New comparisons are secondary analyses of the same queries.",
+  "m8_primary_budget": 3,
+  "m8_secondary_budget": 4,
+  "tie_break": "Highest score, then smallest integer bitmask.",
+  "adaptive": {"risk_threshold": 7.288293838500977, "contender_budget": 3, "contender_count": 4},
+  "bootstrap": {"unit": "dataset_key and query_id, shared across target families and tracks", "resamples": 10000, "seed": 20271103, "quantiles": [0.025, 0.975]},
+  "nested": {"m": [4, 6, 8], "budget": 3, "candidate_rule": "Prefix of the exact historical canonical order. Retain the same cell scales."},
+  "geometry": {"domains": [3, 4, 8], "marginal_max_base": "budget minus 1", "hessian_max_base": "budget minus 2", "threshold": "frozen cell epsilon"},
+  "examples": {"scope": "All primary-budget Track B query-model rows", "positive_rule": "P1 improves BO9 by at least one cell epsilon and selects multiple passages. Take the row nearest the stratum median normalized improvement, then stable key.", "counterexample_rule": "BO9 improves P1 by at least one cell epsilon and P1 selects multiple passages. Take the row nearest the stratum median normalized improvement, then stable key."},
+  "generation": {"budget": 3, "mode": "greedy, batch one, 64 new tokens, exact historical prompt and scorer, pinned model stop IDs plus tokenizer EOS if absent", "reuse": "Reuse verified old context outputs only where the old and corrected effective stop sets coincide. Otherwise regenerate the full union, including every historical role.", "roles": ["BO9", "P1", "P1-check", "BO-adaptive", "Adaptive", "Adaptive-check", "All-pairs", "Source ensemble", "Fixed source", "Truncated Walsh", "Oracle"], "phi_stop_audit": "Reproduce old greedy decoding on one historically capped mask per dataset and track, chosen by key. Compare token boundary and decode under the model stop list."},
+  "gpu_budget_seconds": 36000
+}
