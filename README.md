@@ -1,8 +1,21 @@
 # Complex Utility, Simple Calibration
 
-**Decision Sufficiency in RAG Evidence Selection** · Wenzhang Du · Independent Researcher, China · WSDM 2027 Findings
+**Decision Sufficiency in RAG Evidence Selection**\
+Wenzhang Du · Independent Researcher, China · **WSDM 2027 Findings**
 
-This release reproduces the numerical results of a labelled multi-hop RAG study. With nine utility measurements per eight-passage pool, the best measured context has lower mean regret than an additive selector. Measuring the additive selector's proposal once more reduces mean regret from 0.213 to 0.162 at an average cost of 9.61 target calls. The artifact includes the policy code, complete utility arrays, and per-context answer metrics for auditing that comparison and the other reported experiments.
+[Technical report](https://dqswordman.github.io/technical-reports/decision-sufficiency/) · [中文技术报告](https://dqswordman.github.io/zh/technical-reports/decision-sufficiency/) · [Reproduce the results](#reproduce-the-results) · [Release v1.0.0](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) · [Data provenance](DATA_PROVENANCE.md)
+
+## What one additional check changes
+
+This artifact reproduces a labelled multi-hop RAG study with fixed eight-passage pools. The initial nine calls measure the empty context and each singleton. The additive policy (P1) uses these scores to propose a subset. The one-check policy measures that subset if needed and selects the best of the measured contexts.
+
+| Policy | Mean target calls | Mean normalized regret ↓ | Token F1 ↑ |
+| :--- | ---: | ---: | ---: |
+| Best measured (base) | 9.00 | 0.213 | 0.586 |
+| Additive (P1) | 9.00 | 0.272 | 0.554 |
+| P1 + one check | **9.61** | **0.162** | **0.592** |
+
+These are the primary-budget results with up to three selected passages. Relative to P1, the one-check policy reduces mean normalized regret by 0.109 in the paired comparison (95% interval [0.085, 0.138]). [Main results table](reference/tables/table_primary.tex) · [Paired comparisons](reference/tables/table_paired.tex)
 
 ## Reproduce the results
 
@@ -22,6 +35,15 @@ python code/reproduce.py
 ```
 
 The command verifies the archived inputs by SHA-256, recomputes the selections and paired bootstrap intervals, and checks 22 result CSVs and the exact typeset rows of all four paper tables. Use `python code/reproduce.py --verify-inputs` for an integrity check alone. A completed run writes `results/reproduction_report.json`.
+
+## Artifact contents
+
+| Directory | Contents |
+| :--- | :--- |
+| [`code/`](code/) | CPU replay, selection policies, and table generation |
+| [`data/`](data/) | Archived context utilities, generation metrics, and input checksums |
+| [`frozen/`](frozen/) | Frozen experiment protocols and manifests |
+| [`reference/`](reference/) | Expected result CSVs and typeset rows |
 
 ## Outputs
 
