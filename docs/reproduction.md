@@ -63,6 +63,6 @@ The public [source ZIP](https://github.com/dqswordman/rag-decision-sufficiency/a
 | Figure 2 | `figures/regret_distribution.png` and `results/m8_decisions.csv` | Cumulative regret curves for four selection policies |
 | Worked examples in Section 5.1 | `results/worked_examples_with_generation.json` | Archived query keys, observed probes, selected masks, and normalized-alias answer metrics |
 
-Use [the result map](result-map.csv) to connect each result to its frozen input and protocol. [The asset manifest](asset-manifest.csv) and [data provenance](../DATA_PROVENANCE.md) identify the original measurements, the benchmark identifiers, and the model revisions. The numerical replay starts after target scoring and answer scoring. It uses the published aggregate scores keyed by context.
+The archive contains per-context utility scores, deduplicated answer scores, frozen settings, and reference summaries. The replay joins 8,106 scored contexts to 15,840 method outcomes and regenerates the decision rows, paired summaries, table bodies, and plot. It starts after target scoring and answer scoring. [Result map](result-map.csv) · [Asset manifest](asset-manifest.csv) · [Data provenance](../DATA_PROVENANCE.md)
 
 If an input hash fails, obtain a clean `v1.0.0` copy and run `python code/reproduce.py --verify-inputs` in the configured environment before retrying. For a result discrepancy, record the tag or commit, Python and package versions, command, and the mismatched file or table in the GitHub issue.

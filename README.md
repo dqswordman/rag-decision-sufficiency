@@ -18,7 +18,7 @@ python code/inspect_case.py
 
 On the MuSiQue question about King Arthur, P1 estimates utility **1.574** for passages **{1, 5}**. The measured pair scores **0.206**. The check returns passage **{1}**, the best measured context at **0.918**. The program prints both the chosen contexts and their archived answer scores. The pair produced the exact short answer on this question, while the singleton scored 0.444 token F1. [Example details](docs/reproduction.md#try-one-archived-decision)
 
-## What the held-out cases show
+## Results at a glance
 
 [![Mean normalized regret at the nine-call budget and after one optional check. BO9 0.213, P1 0.272, and P1 plus one check 0.162.](https://dqswordman.github.io/assets/reports/decision-sufficiency/mean-regret.png)](https://dqswordman.github.io/technical-reports/decision-sufficiency/#results)
 
@@ -30,11 +30,15 @@ A second operating point uses selected pair measurements. At the same mean cost 
 
 Use [`v1.0.0`](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) at `7b0f639a207b1826915227aaff2eef3addea499d` for the paper replay. A clean CPU run with Python 3.9.21 verified **41 input hashes**, matched **22 result CSVs** and **four TeX table bodies**, and regenerated the regret distribution. The replay reads archived scores. The original benchmark and model revisions are recorded in the provenance file.
 
-[Run the tagged replay](docs/reproduction.md#replay-the-paper-results) · [Result map](docs/result-map.csv) · [Version manifest](docs/release-manifest.json) · [Published verification record](https://github.com/dqswordman/rag-decision-sufficiency/releases/download/v1.0.0/reproduction_report.json)
+[Run the tagged replay](docs/reproduction.md#replay-the-paper-results) · [Published verification record](https://github.com/dqswordman/rag-decision-sufficiency/releases/download/v1.0.0/reproduction_report.json)
 
 The default branch is maintained for the example and documentation. Use the release tag when citing or replaying the frozen analysis.
 
-## Reuse and cite
+## Trace the results
+
+The result map connects the four manuscript tables, the regret distribution, and the two worked examples to the frozen settings and output files. The version manifest records the paper, code, and web companion versions. [Result map](docs/result-map.csv) · [Version manifest](docs/release-manifest.json)
+
+## Citation and reuse
 
 The original code is available under the [MIT License](LICENSE). Original numerical measurements are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with benchmark identifiers governed by the upstream terms in [data provenance](DATA_PROVENANCE.md). The [asset manifest](docs/asset-manifest.csv) records sources, versions, and checksums.
 
