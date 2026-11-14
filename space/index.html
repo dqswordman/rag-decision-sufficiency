@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Explore two archived RAG evidence decisions and download the WSDM 2027 Findings CPU reproducibility artifact.">
+    <meta name="color-scheme" content="light">
+    <title>Complex Utility, Simple Calibration · WSDM 2027 Findings</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="explore.js" defer></script>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <p class="venue">WSDM 2027 Findings</p>
+        <h1>Complex Utility,<br class="wide"> Simple Calibration</h1>
+        <p class="subtitle">Decision Sufficiency in RAG Evidence Selection</p>
+        <p class="byline">Wenzhang Du</p>
+        <nav aria-label="Project links">
+          <a class="badge" href="https://github.com/dqswordman/rag-decision-sufficiency" target="_blank" rel="noopener noreferrer">GitHub repository</a>
+          <a class="badge" href="https://dqswordman.github.io/technical-reports/decision-sufficiency/" target="_blank" rel="noopener noreferrer">Paper companion</a>
+          <a class="badge" lang="zh" href="https://dqswordman.github.io/zh/technical-reports/decision-sufficiency/" target="_blank" rel="noopener noreferrer">中文伴读</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section aria-labelledby="decision-heading">
+        <h2 id="decision-heading">Follow one archived decision</h2>
+        <p>Start with the empty context and eight single passages. Compare the best measured context with the additive proposal, then see what changes after measuring the proposal.</p>
+        <div id="decision-controls" hidden>
+          <label for="case">Archived case</label>
+          <select id="case">
+            <option value="king-arthur">King Arthur · Mistral</option>
+            <option value="ornans">Ornans · Qwen</option>
+          </select>
+          <div id="case-details" aria-live="polite"></div>
+          <template id="decision-table">
+            <div class="table-scroll" role="region" aria-label="Archived decision results" tabindex="0">
+              <table>
+                <caption></caption>
+                <thead>
+                  <tr><th scope="col">Policy</th><th scope="col">Calls</th><th scope="col">Passages</th><th scope="col">Measured utility</th><th scope="col">Token F1</th><th scope="col">Exact match</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </template>
+        </div>
+        <p id="case-status" role="status">Loading the archived cases…</p>
+        <noscript><p>Compare both cases in the <a href="https://dqswordman.github.io/technical-reports/decision-sufficiency/">paper companion</a>.</p></noscript>
+        <p class="note">Measured utility is centered reference-answer log likelihood per token. Token F1 and exact match come from the archived answers.</p>
+      </section>
+
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading">Across 1,440 matched settings</h2>
+        <p>The main comparison uses eight candidate passages and a selection budget of three. Lower mean normalized regret is better.</p>
+        <div id="results"></div>
+        <p id="results-status" role="status">Loading the archived comparison…</p>
+        <p>For greedy answers, the paired token F1 gain over P1 is 0.038, with a 95% interval of [0.020, 0.056]. The interval for the gain over BO9 includes zero.</p>
+      </section>
+
+      <section aria-labelledby="replay-heading">
+        <h2 id="replay-heading">Reproduce the paper on CPU</h2>
+        <p>The frozen <code>v1.0.0</code> archive includes the numerical inputs, replay code and reference outputs. The published verification matched 22 result CSVs and all four manuscript table bodies.</p>
+        <div class="replay-links">
+          <a class="badge primary" href="https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency/resolve/main/rag-decision-sufficiency-v1.0.0.zip" target="_blank" rel="noopener noreferrer">Download v1.0.0 ZIP</a>
+          <a href="https://github.com/dqswordman/rag-decision-sufficiency/blob/main/docs/reproduction.md#replay-the-paper-results" target="_blank" rel="noopener noreferrer">Reproduction guide</a>
+          <a href="https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency/resolve/main/SNAPSHOT.json" target="_blank" rel="noopener noreferrer">Checksums and source commit</a>
+          <a href="https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency/resolve/main/reproduction_report.json" target="_blank" rel="noopener noreferrer">Published verification</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      <p>Code under MIT · Original measurements under CC BY 4.0</p>
+      <a href="https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency/blob/main/DATA_PROVENANCE.md" target="_blank" rel="noopener noreferrer">Data provenance</a>
+      <a href="https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency/blob/main/CITATION.cff" target="_blank" rel="noopener noreferrer">Citation</a>
+    </footer>
+  </body>
+</html>

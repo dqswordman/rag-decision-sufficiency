@@ -3,6 +3,7 @@
 import argparse
 import csv
 from itertools import combinations
+import json
 from math import fsum
 from pathlib import Path
 
@@ -30,11 +31,8 @@ def positions(mask):
     return "{" + ", ".join(str(bit + 1) for bit in range(8) if mask & (1 << bit)) + "}"
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--case", choices=CASES, default="king-arthur")
-    args = parser.parse_args()
-    query, model = CASES[args.case]
+def inspect_case(case):
+    query, model = CASES[case]
     (scores,) = records("m8_raw_mean_logprobs.csv", query, model)
     empty = float(scores["mask_0"])
     singletons = [1 << index for index in range(8)]
@@ -63,18 +61,39 @@ def main():
         int(row["selected_mask"]): row
         for row in records("generation_context_scores.csv", query, model)
     }
-    print(f"MuSiQue / B_m8 / {model} / {query}")
-    print(f"P1 estimates utility {candidates[proposal]:.3f} for {positions(proposal)}.")
-    print("Policy                Calls  Set           Measured U  Token F1  Answer EM")
+    policies = []
     for name, mask, calls in (
         ("Best measured (BO9)", best_initial, 9),
         ("Additive (P1)", proposal, 9),
         ("P1 + one check", checked, 9 + int(proposal not in initial)),
     ):
         answer = answers[mask]
+        policies.append({
+            "name": name, "calls": calls, "context": positions(mask), "utility": utility(mask),
+            "token_f1": float(answer["token_f1"]), "exact_match": int(float(answer["exact_match"])),
+        })
+    return {
+        "dataset": "MuSiQue", "pool": "B_m8", "model": model, "query": query,
+        "proposal_utility": candidates[proposal], "policies": policies,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--case", choices=CASES, default="king-arthur")
+    parser.add_argument("--json", action="store_true", help="Print the archived decision as JSON.")
+    args = parser.parse_args()
+    case = inspect_case(args.case)
+    if args.json:
+        print(json.dumps(case, allow_nan=False))
+        return
+
+    print("{dataset} / {pool} / {model} / {query}".format(**case))
+    print(f"P1 estimates utility {case['proposal_utility']:.3f} for {case['policies'][1]['context']}.")
+    print("Policy                Calls  Set           Measured U  Token F1  Answer EM")
+    for policy in case["policies"]:
         print(
-            f"{name:21} {calls:5}  {positions(mask):12} {utility(mask):11.3f}"
-            f"  {float(answer['token_f1']):8.3f}  {int(float(answer['exact_match'])):9d}"
+            "{name:21} {calls:5}  {context:12} {utility:11.3f}  {token_f1:8.3f}  {exact_match:9d}".format(**policy)
         )
 
 

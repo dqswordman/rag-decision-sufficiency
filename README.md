@@ -2,6 +2,8 @@
 
 Wenzhang Du · WSDM 2027 Findings · Accepted manuscript
 
+[![Hugging Face Space](https://img.shields.io/badge/Hugging_Face-Space-1B4D3E?style=flat-square&labelColor=263238)](https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency)
+
 The artifact replays how an additive model proposes a RAG evidence set and how a target score changes the final choice. It includes the numerical inputs, policy code, paired comparisons, and reference outputs for CPU reproduction.
 
 [Paper companion](https://dqswordman.github.io/technical-reports/decision-sufficiency/) · [中文伴读](https://dqswordman.github.io/zh/technical-reports/decision-sufficiency/) · [Reproduction guide](docs/reproduction.md) · [Release v1.0.0](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0)
