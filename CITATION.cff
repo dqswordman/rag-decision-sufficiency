@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use these artifacts, please cite this release and the associated WSDM 2027 Findings paper."
+message: "If you use these artifacts, please cite this release and the associated WSDM 2027 paper."
 title: "Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection"
 type: software
 authors:

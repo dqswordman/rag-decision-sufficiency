@@ -6,7 +6,7 @@ colorTo: gray
 sdk: static
 app_file: index.html
 license: other
-short_description: "WSDM 2027 Findings | Archived decisions and CPU replay"
+short_description: "WSDM 2027 | Archived decisions and CPU replay"
 tags:
   - rag
   - reproducibility
@@ -15,7 +15,7 @@ tags:
 
 # Complex Utility, Simple Calibration
 
-Wenzhang Du · WSDM 2027 Findings
+Wenzhang Du · WSDM 2027
 
 [![GitHub](https://img.shields.io/badge/GitHub-Code-1B4D3E?style=flat-square&labelColor=263238)](https://github.com/dqswordman/rag-decision-sufficiency)
 [![Paper companion](https://img.shields.io/badge/Paper_companion-263238?style=flat-square)](https://dqswordman.github.io/technical-reports/decision-sufficiency/)

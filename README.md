@@ -1,6 +1,6 @@
 # Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection
 
-Wenzhang Du · WSDM 2027 Findings · Accepted manuscript
+Wenzhang Du · WSDM 2027 · Accepted manuscript
 
 [![Hugging Face Space](https://img.shields.io/badge/Hugging_Face-Space-1B4D3E?style=flat-square&labelColor=263238)](https://huggingface.co/spaces/DQSWORDMAN/rag-decision-sufficiency)
 
@@ -46,4 +46,4 @@ The result map connects the four manuscript tables, the regret distribution, and
 
 The original code is available under the [MIT License](LICENSE). Original numerical measurements are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), with benchmark identifiers governed by the upstream terms in [data provenance](DATA_PROVENANCE.md). The [asset manifest](docs/asset-manifest.csv) records sources, versions, and checksums.
 
-Cite Wenzhang Du, *Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection*, WSDM 2027 Findings, for the research. Cite the [software artifact](CITATION.cff) at `v1.0.0` when using the archived inputs or CPU replay.
+Cite Wenzhang Du, *Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection*, WSDM 2027, for the research. Cite the [software artifact](CITATION.cff) at `v1.0.0` when using the archived inputs or CPU replay.

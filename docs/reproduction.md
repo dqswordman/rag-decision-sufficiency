@@ -1,4 +1,4 @@
-# Reproduce the WSDM 2027 Findings artifact
+# Reproduce the WSDM 2027 artifact
 
 Wenzhang Du, *Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection*, author-final manuscript dated 11 November 2026.
 
