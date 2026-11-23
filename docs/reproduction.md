@@ -2,7 +2,7 @@
 
 Wenzhang Du, *Complex Utility, Simple Calibration: Decision Sufficiency in RAG Evidence Selection*, author-final manuscript dated 11 November 2026.
 
-The tagged artifact `v1.0.0` at commit `7b0f639a207b1826915227aaff2eef3addea499d` starts from archived scalar model scores. It reconstructs the selection policies, paired statistics, generation-score joins, four manuscript table bodies, and Figure 2. [Release](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) · [Web companion](https://dqswordman.github.io/technical-reports/decision-sufficiency/)
+Start with the King Arthur case to inspect a single selection. To check the paper’s aggregate comparisons, use the tagged score archive. Its CPU replay reconstructs policy choices, joins the saved answer scores and reproduces the paired estimates, four manuscript tables and Figure 2. Use the release at commit `7b0f639a207b1826915227aaff2eef3addea499d` (v1.0.0). [Release](https://github.com/dqswordman/rag-decision-sufficiency/releases/tag/v1.0.0) · [Web companion](https://dqswordman.github.io/technical-reports/decision-sufficiency/)
 
 ## Try one archived decision
 

@@ -27,7 +27,7 @@
     <main class="wrap">
       <section aria-labelledby="decision-heading">
         <h2 id="decision-heading">Follow one archived decision</h2>
-        <p>Start with the empty context and eight single passages. Compare the best measured context with the additive proposal, then see what changes after measuring the proposal.</p>
+        <p>Choose a question. Start with the scores for the empty context and eight single passages, then inspect the proposed combination. The measured score determines which context is kept. The saved answer lets you see what the generator actually said.</p>
         <div id="decision-controls" hidden>
           <label for="case">Archived case</label>
           <select id="case">
@@ -49,7 +49,7 @@
         </div>
         <p id="case-status" role="status">Loading the archived cases…</p>
         <noscript><p>Compare both cases in the <a href="https://dqswordman.github.io/technical-reports/decision-sufficiency/">paper companion</a>.</p></noscript>
-        <p class="note">Measured utility is centered reference-answer log likelihood per token. Token F1 and exact match come from the archived answers.</p>
+        <p class="note">Utility is the reference answer’s average log likelihood per token, relative to reading no passages. Token F1 and exact match are calculated on the saved generated answers.</p>
       </section>
 
       <section aria-labelledby="results-heading">
@@ -57,7 +57,7 @@
         <p>The main comparison uses eight candidate passages and a selection budget of three. Lower mean normalized regret is better.</p>
         <div id="results"></div>
         <p id="results-status" role="status">Loading the archived comparison…</p>
-        <p>For greedy answers, the paired token F1 gain over P1 is 0.038, with a 95% interval of [0.020, 0.056]. The interval for the gain over BO9 includes zero.</p>
+        <p>For generated answers, checking the proposal gains 0.038 token F1 over leaving it unchecked (paired 95% interval 0.020 to 0.056). Against the best already-measured context, the change is +0.006 (−0.003 to +0.015).</p>
       </section>
 
       <section aria-labelledby="replay-heading">

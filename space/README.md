@@ -6,7 +6,7 @@ colorTo: gray
 sdk: static
 app_file: index.html
 license: other
-short_description: "WSDM 2027 | Archived decisions and CPU replay"
+short_description: Trace how one more passage-set score changes a RAG decision
 tags:
   - rag
   - reproducibility
@@ -21,7 +21,7 @@ Wenzhang Du · WSDM 2027
 [![Paper companion](https://img.shields.io/badge/Paper_companion-263238?style=flat-square)](https://dqswordman.github.io/technical-reports/decision-sufficiency/)
 [![中文伴读](https://img.shields.io/badge/%E4%B8%AD%E6%96%87%E4%BC%B4%E8%AF%BB-263238?style=flat-square)](https://dqswordman.github.io/zh/technical-reports/decision-sufficiency/)
 
-In the Space, follow two archived RAG evidence decisions and see when measuring the additive proposal changes the selected context. The figures and examples use the numerical archive. The browser app requires no model weights.
+Choose a saved question to follow an evidence decision. Compare the model’s predicted score for a passage combination with its measured score, then inspect the answer generated from each context. The two cases show why a better likelihood score need not produce a better answer.
 
 The GitHub repository maintains the code and documentation. The Space mirrors its default branch and includes a separate ZIP of the frozen release for the full CPU replay. The [release manifest](docs/release-manifest.json) records the artifact version and the published verification. The [reproduction guide](docs/reproduction.md) gives the commands.
 
